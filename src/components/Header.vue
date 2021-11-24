@@ -1,32 +1,51 @@
 <template>
   <div class="header">
-    <img src="../assets/logo.svg" class="logo" />
+    <!-- Logo with link back to homepage -->
+    <a href="#" class="logo"><LogoIcon /></a>
 
+    <!-- Navigational menu -->
     <nav class="nav">
       <a href="#" class="nav__link">Shop</a>
       <a href="#" class="nav__link">Contact</a>
       <a href="#" class="nav__link">Log In</a>
     </nav>
 
-    <div class="shopping-cart">
-      <img src="../assets/shopping-bag.svg" class="shopping-cart__icon" />
+    <!-- Shopping Bag Icon // toggles cart preview on click -->
+    <div class="shopping-cart" @click="toggle_cart">
+      <ShoppingBagIcon class="shopping-cart__icon" />
       <span class="shopping-cart__item-count">0</span>
     </div>
 
-    <div class="cart-preview">
+    <!-- Cart Preview Card // lists all items in cart with link to checkout -->
+    <div class="cart-preview" v-show="show_cart">
       <div class="cart-preview__items">
         <span class="cart-preview__empty-message">Cart is empty</span>
       </div>
       <a href="#" class="btn btn--bottom">Checkout</a>
     </div>
+    
   </div>
 </template>
 
 
 <script>
+import LogoIcon from "../assets/logo.svg?inline";
+import ShoppingBagIcon from "../assets/shopping-bag.svg?inline";
+
 export default {
   name: "Header",
-  setup() {},
+  data: function () {
+    return { show_cart: false };
+  },
+  methods: {
+    toggle_cart: function () {
+      this.show_cart = !this.show_cart;
+    },
+  },
+  components: {
+    LogoIcon,
+    ShoppingBagIcon,
+  },
 };
 </script>
 
