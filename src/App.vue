@@ -1,14 +1,17 @@
 <template>
   <Header />
+  <Directory />
 </template>
 
 <script>
 import Header from "./components/Header.vue";
+import Directory from "./components/Directory.vue";
 
 export default {
   name: "App",
   components: {
     Header,
+    Directory,
   },
 };
 </script>
