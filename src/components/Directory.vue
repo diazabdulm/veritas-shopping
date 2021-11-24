@@ -4,11 +4,11 @@
       class="category"
       v-for="category in categories"
       :key="category.id"
-      :style="categoryStyles(category)"
+      :style="category_styles(category)"
     >
       <div
         class="category__background"
-        :style="backgroundStyles(category)"
+        :style="background_styles(category)"
       ></div>
       <div class="category__content">
         <div class="category__title">{{ category.title }}</div>
@@ -27,11 +27,11 @@ export default {
     return { categories };
   },
   methods: {
-    categoryStyles: function (category) {
-      const isLarge = category.size === "large";
-      return { height: isLarge && 380 + "px" };
+    category_styles: function (category) {
+      const is_large = category.size === "large";
+      return { height: is_large && 380 + "px" };
     },
-    backgroundStyles: function (category) {
+    background_styles: function (category) {
       return { "background-image": `url(${category.imgURL})` };
     },
   },
